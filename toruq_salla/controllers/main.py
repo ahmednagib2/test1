@@ -8,16 +8,29 @@ from odoo.http import Response, request
 _logger = logging.getLogger(__name__)
 
 HANDLED_EVENTS = {
-    'order.created', 'order.updated', 'order.status.updated', 'order.payment.updated',
-    'order.cancelled', 'order.refunded',
-    'product.created', 'product.deleted', 'product.price.updated', 'product.status.updated',
+    'app.store.authorize',
+    'app.installed',
+    'app.updated',
     'app.uninstalled',
+    'order.created',
+    'order.updated',
+    'order.status.updated',
+    'order.payment.updated',
+    'order.cancelled',
+    'order.refunded',
+    'product.created',
+    'product.deleted',
+    'product.price.updated',
+    'product.status.updated',
 }
 
 
 def _reply(status, message):
-    return Response(json.dumps({'ok': status == 200, 'message': message}), status=status,
-                    headers=[('Content-Type', 'application/json')])
+    return Response(
+        json.dumps({'ok': status == 200, 'message': message}),
+        status=status,
+        headers=[('Content-Type', 'application/json')],
+    )
 
 
 class SallaWebhook(http.Controller):
@@ -25,7 +38,12 @@ class SallaWebhook(http.Controller):
     @http.route('/toruq_salla/webhook', type='http', auth='public', methods=['GET', 'POST'], csrf=False)
     def webhook(self, **kwargs):
         if request.httprequest.method == 'GET':
-            return Response('toruq_salla webhook is ready', status=200, headers=[('Content-Type', 'text/plain')])
+            return Response(
+                'toruq_salla webhook is ready',
+                status=200,
+                headers=[('Content-Type', 'text/plain')],
+            )
+
         raw = request.httprequest.get_data() or b''
         try:
             payload = json.loads(raw.decode('utf-8'))
@@ -33,21 +51,39 @@ class SallaWebhook(http.Controller):
             return _reply(400, 'invalid json')
         if not isinstance(payload, dict):
             return _reply(400, 'invalid payload')
+
         merchant = str(payload.get('merchant') or '')
         event = payload.get('event') or ''
         signature = request.httprequest.headers.get('X-Salla-Signature', '')
         Store = request.env['toruq.salla.store'].sudo()
+
+        # Prefer a store matched by merchant and signature. During the first
+        # Easy Mode authorization merchant_id may not be stored yet, so fall
+        # back to the only draft store with the same webhook secret.
         store = Store._match_store(merchant, raw, signature)
         if not store:
-            return _reply(401, 'invalid signature')
+            candidates = Store.search([
+                ('state', '=', 'draft'),
+                ('webhook_secret', '!=', False),
+            ])
+            valid = candidates.filtered(lambda s: s._webhook_signature_valid(raw, signature))
+            if len(valid) == 1:
+                store = valid
+
+        if not store:
+            return _reply(401, 'invalid signature or store')
+
+        data = payload.get('data') or {}
+        if merchant and not store.merchant_id:
+            store.sudo().write({'merchant_id': merchant})
+
         if event == 'app.store.authorize':
             store._handle_authorize(payload)
             return _reply(200, 'authorized')
+
         if event not in HANDLED_EVENTS:
             return _reply(200, 'ignored')
-        if merchant and not store.merchant_id:
-            store.merchant_id = merchant
-        data = payload.get('data') or {}
+
         dedup = hashlib.sha256(raw).hexdigest()
         Event = request.env['toruq.salla.event'].sudo()
         if not Event.search([('store_id', '=', store.id), ('dedup_key', '=', dedup)], limit=1):
