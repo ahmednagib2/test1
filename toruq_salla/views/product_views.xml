@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_toruq_salla" model="ir.ui.view">
+        <field name="name">product.template.form.toruq.salla</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Salla" name="toruq_salla">
+                    <group>
+                        <group>
+                            <field name="toruq_salla_publish"/>
+                        </group>
+                        <group>
+                            <field name="toruq_salla_reserve_custom"/>
+                            <field name="toruq_salla_reserve" invisible="not toruq_salla_reserve_custom"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_toruq_salla" model="ir.ui.view">
+        <field name="name">product.template.search.toruq.salla</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter name="toruq_salla_published" string="Published on Salla" domain="[('toruq_salla_publish', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_publish_on_salla" model="ir.actions.server">
+        <field name="name">Publish on Salla</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">records.toruq_action_publish()</field>
+    </record>
+
+    <record id="action_unpublish_from_salla" model="ir.actions.server">
+        <field name="name">Stop Publishing on Salla</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">records.toruq_action_unpublish()</field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_toruq_salla" model="ir.ui.view">
+        <field name="name">sale.order.form.toruq.salla</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Salla" name="toruq_salla" invisible="not toruq_salla_store_id">
+                    <group>
+                        <group>
+                            <field name="toruq_salla_store_id"/>
+                            <field name="toruq_salla_order_id"/>
+                            <field name="toruq_salla_reference"/>
+                        </group>
+                        <group>
+                            <field name="toruq_salla_status"/>
+                            <field name="toruq_salla_payment_method"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_salla_orders" model="ir.actions.act_window">
+        <field name="name">Salla Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('toruq_salla_store_id', '!=', False)]</field>
+    </record>
+</odoo>

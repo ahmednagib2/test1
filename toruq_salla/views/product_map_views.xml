@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_map_list" model="ir.ui.view">
+        <field name="name">toruq.salla.product.list</field>
+        <field name="model">toruq.salla.product</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="link_state == 'missing'" decoration-warning="link_state == 'unmatched'" create="0">
+                <header>
+                    <button name="action_push_stock" type="object" string="Push Stock" groups="toruq_salla.group_manager"/>
+                    <button name="action_relink" type="object" string="Re-link by SKU" groups="toruq_salla.group_manager"/>
+                </header>
+                <field name="store_id" optional="hide"/>
+                <field name="sku"/>
+                <field name="name"/>
+                <field name="product_id" optional="show"/>
+                <field name="salla_status" optional="show"/>
+                <field name="salla_price" optional="show"/>
+                <field name="salla_qty"/>
+                <field name="odoo_qty"/>
+                <field name="reserve_qty" optional="hide"/>
+                <field name="target_qty"/>
+                <field name="last_push_date" optional="hide"/>
+                <field name="error" optional="show"/>
+                <field name="link_state" widget="badge" decoration-success="link_state == 'linked'" decoration-warning="link_state == 'unmatched'" decoration-danger="link_state == 'missing'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_product_map_form" model="ir.ui.view">
+        <field name="name">toruq.salla.product.form</field>
+        <field name="model">toruq.salla.product</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="store_id"/>
+                            <field name="product_id"/>
+                            <field name="salla_product_id"/>
+                            <field name="sku"/>
+                            <field name="name"/>
+                            <field name="exclude"/>
+                        </group>
+                        <group>
+                            <field name="link_state"/>
+                            <field name="salla_status"/>
+                            <field name="salla_type"/>
+                            <field name="salla_price"/>
+                            <field name="salla_qty"/>
+                            <field name="salla_unlimited"/>
+                        </group>
+                    </group>
+                    <group string="Stock">
+                        <group>
+                            <field name="odoo_qty"/>
+                            <field name="reserve_qty"/>
+                            <field name="target_qty"/>
+                        </group>
+                        <group>
+                            <field name="last_pushed_qty"/>
+                            <field name="last_push_date"/>
+                            <field name="fail_count"/>
+                            <field name="error"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_map_search" model="ir.ui.view">
+        <field name="name">toruq.salla.product.search</field>
+        <field name="model">toruq.salla.product</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sku"/>
+                <field name="name"/>
+                <field name="product_id"/>
+                <filter name="linked" string="Linked" domain="[('link_state', '=', 'linked')]"/>
+                <filter name="unmatched" string="Not in Odoo" domain="[('link_state', '=', 'unmatched')]"/>
+                <filter name="missing" string="Missing in Salla" domain="[('link_state', '=', 'missing')]"/>
+                <separator/>
+                <filter name="out_of_stock" string="Out of Stock in Salla" domain="[('salla_unlimited', '=', False), ('salla_qty', '&lt;=', 0)]"/>
+                <filter name="has_error" string="With Errors" domain="[('error', '!=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_store" string="Store" context="{'group_by': 'store_id'}"/>
+                    <filter name="group_state" string="Link Status" context="{'group_by': 'link_state'}"/>
+                    <filter name="group_status" string="Salla Status" context="{'group_by': 'salla_status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_map" model="ir.actions.act_window">
+        <field name="name">Salla Products</field>
+        <field name="res_model">toruq.salla.product</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

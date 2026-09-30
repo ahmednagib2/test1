@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_root" name="Salla" sequence="55" web_icon="toruq_salla,static/description/icon.svg" groups="toruq_salla.group_user"/>
+    <menuitem id="menu_dashboard" name="Dashboard" parent="menu_root" action="action_dashboard" sequence="1"/>
+    <menuitem id="menu_orders" name="Orders" parent="menu_root" action="action_salla_orders" sequence="2"/>
+    <menuitem id="menu_products" name="Products" parent="menu_root" action="action_product_map" sequence="3"/>
+    <menuitem id="menu_events" name="Events Log" parent="menu_root" action="action_event" sequence="4"/>
+    <menuitem id="menu_config" name="Configuration" parent="menu_root" sequence="9" groups="toruq_salla.group_manager"/>
+    <menuitem id="menu_stores" name="Stores" parent="menu_config" action="action_store" sequence="1"/>
+</odoo>

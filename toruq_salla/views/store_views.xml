@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_store_list" model="ir.ui.view">
+        <field name="name">toruq.salla.store.list</field>
+        <field name="model">toruq.salla.store</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="merchant_id"/>
+                <field name="warehouse_id"/>
+                <field name="order_import_mode"/>
+                <field name="last_pull_date"/>
+                <field name="state" widget="badge" decoration-success="state == 'connected'" decoration-danger="state == 'error'" decoration-info="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_store_form" model="ir.ui.view">
+        <field name="name">toruq.salla.store.form</field>
+        <field name="model">toruq.salla.store</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_connection" type="object" string="Test Connection" class="btn-primary" groups="toruq_salla.group_manager"/>
+                    <button name="action_pull_products" type="object" string="Pull Products from Salla" groups="toruq_salla.group_manager"/>
+                    <button name="action_sync_products" type="object" string="Sync Products to Salla" groups="toruq_salla.group_manager"/>
+                    <button name="action_push_stock" type="object" string="Push Stock Now" groups="toruq_salla.group_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,connected"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Turoq Al-Ghida Store"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="merchant_id"/>
+                            <field name="store_name"/>
+                        </group>
+                        <group>
+                            <field name="last_pull_date"/>
+                            <field name="last_push_date"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-danger" role="alert" invisible="not last_error">
+                        <field name="last_error" readonly="1" nolabel="1"/>
+                    </div>
+                    <notebook>
+                        <page string="Connection" name="connection">
+                            <group>
+                                <group string="Salla App Keys">
+                                    <field name="client_id"/>
+                                    <field name="client_secret" password="True"/>
+                                    <field name="webhook_secret" password="True"/>
+                                </group>
+                                <group string="Tokens">
+                                    <field name="access_token" password="True"/>
+                                    <field name="refresh_token" password="True"/>
+                                    <field name="token_expires"/>
+                                </group>
+                            </group>
+                            <group string="Webhook">
+                                <field name="webhook_url" widget="CopyClipboardChar"/>
+                            </group>
+                        </page>
+                        <page string="Stock" name="stock">
+                            <group>
+                                <group string="Source of Stock">
+                                    <field name="warehouse_id"/>
+                                    <field name="location_ids" widget="many2many_tags"/>
+                                    <field name="branch_ref"/>
+                                </group>
+                                <group string="Rules">
+                                    <field name="stock_sync_enabled"/>
+                                    <field name="safety_enabled"/>
+                                    <field name="safety_default" invisible="not safety_enabled"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Products" name="products">
+                            <group>
+                                <group string="Publishing">
+                                    <field name="auto_create_products"/>
+                                    <field name="new_product_status"/>
+                                </group>
+                                <group string="Fields to Keep in Sync">
+                                    <field name="sync_name"/>
+                                    <field name="name_lang_id" invisible="not sync_name"/>
+                                    <field name="sync_price"/>
+                                    <field name="price_tax_mode" invisible="not sync_price"/>
+                                    <field name="sync_description"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Orders" name="orders">
+                            <group>
+                                <group string="Import">
+                                    <field name="order_import_mode"/>
+                                    <field name="unmatched_policy"/>
+                                    <field name="salesperson_id"/>
+                                    <field name="shipping_product_id"/>
+                                    <field name="fee_product_id"/>
+                                </group>
+                                <group string="Automation (confirmed orders only)">
+                                    <field name="auto_invoice"/>
+                                    <field name="invoice_statuses" invisible="not auto_invoice"/>
+                                    <field name="auto_payment" invisible="not auto_invoice"/>
+                                    <field name="payment_journal_id" invisible="not auto_invoice or not auto_payment"/>
+                                    <field name="auto_deliver"/>
+                                    <field name="deliver_statuses" invisible="not auto_deliver"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_store" model="ir.actions.act_window">
+        <field name="name">Salla Stores</field>
+        <field name="res_model">toruq.salla.store</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
