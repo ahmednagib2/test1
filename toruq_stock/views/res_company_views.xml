@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_company_toruq_stock_view" model="ir.ui.view">
+        <field name="name">res.company.toruq.stock</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="odoo_salla_inventory_app.res_company_tecfy_salla_view_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tecfy_salla_location_ids']" position="after">
+                <separator string="toruq_stock: Showroom safety stock"/>
+                <field name="toruq_safety_enabled"/>
+                <field name="toruq_safety_default" invisible="not toruq_safety_enabled"/>
+                <field name="toruq_fast_sync_enabled"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
