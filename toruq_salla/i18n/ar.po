@@ -12,554 +12,686 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__name
 msgid "Store Name"
 msgstr "اسم المتجر"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__company_id
 msgid "Company"
 msgstr "الشركة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__merchant_id
 msgid "Salla Merchant ID"
 msgstr "رقم التاجر في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__store_name
 msgid "Salla Store Name"
 msgstr "اسم المتجر في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__state
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__state
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_search
 msgid "Status"
 msgstr "الحالة"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__state__draft
 msgid "Not Connected"
 msgstr "غير متصل"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__state__connected
 msgid "Connected"
 msgstr "متصل"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__state__error
 msgid "Connection Error"
 msgstr "خطأ في الاتصال"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__last_error
 msgid "Last Error"
 msgstr "آخر خطأ"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__client_id
 msgid "Client ID"
 msgstr "معرّف العميل (Client ID)"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__client_secret
 msgid "Client Secret"
 msgstr "السر (Client Secret)"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__webhook_secret
 msgid "Webhook Secret"
 msgstr "سر الـ Webhook"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__access_token
 msgid "Access Token"
 msgstr "رمز الوصول"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__refresh_token
 msgid "Refresh Token"
 msgstr "رمز التجديد"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__token_expires
 msgid "Token Expires (UTC)"
 msgstr "انتهاء الرمز (UTC)"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__webhook_url
 msgid "Webhook URL"
 msgstr "رابط الـ Webhook"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__warehouse_id
 msgid "Stock Warehouse"
 msgstr "مخزن الاعتماد"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__location_ids
 msgid "Stock Locations"
 msgstr "مواقع المخزون"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__stock_sync_enabled
 msgid "Sync Stock to Salla"
 msgstr "مزامنة المخزون إلى سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__safety_enabled
 msgid "Keep a Showroom Reserve"
 msgstr "الاحتفاظ باحتياطي للمعرض"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__safety_default
 msgid "Default Showroom Reserve"
 msgstr "احتياطي المعرض الافتراضي"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__branch_ref
 msgid "Salla Branch ID (optional)"
 msgstr "معرّف فرع سلة (اختياري)"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__auto_create_products
 msgid "Create Published Products in Salla"
 msgstr "إنشاء المنتجات المنشورة في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__new_product_status
 msgid "Status of New Products"
 msgstr "حالة المنتجات الجديدة"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__new_product_status__hidden
 msgid "Hidden"
 msgstr "مخفي"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__new_product_status__sale
 msgid "On Sale"
 msgstr "معروض للبيع"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__sync_name
 msgid "Sync Product Names"
 msgstr "مزامنة أسماء المنتجات"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__name_lang_id
 msgid "Name Language"
 msgstr "لغة الاسم"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__sync_price
 msgid "Sync Prices"
 msgstr "مزامنة الأسعار"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__price_tax_mode
 msgid "Price Mode"
 msgstr "طريقة السعر"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__price_tax_mode__as_is
 msgid "Odoo sales price as is"
 msgstr "سعر البيع في أودو كما هو"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__price_tax_mode__add_tax
 msgid "Add sales taxes to the price"
 msgstr "إضافة ضريبة المبيعات إلى السعر"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__sync_description
 msgid "Sync Descriptions"
 msgstr "مزامنة الأوصاف"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__order_import_mode
 msgid "Order Import"
 msgstr "استيراد الطلبات"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__order_import_mode__none
 msgid "Do not import orders"
 msgstr "عدم استيراد الطلبات"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__order_import_mode__quotation
 msgid "Create quotations"
 msgstr "إنشاء عروض أسعار"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__order_import_mode__confirmed
 msgid "Create confirmed sales orders"
 msgstr "إنشاء أوامر بيع مؤكدة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__unmatched_policy
 msgid "Unknown Products in Orders"
 msgstr "منتجات غير معروفة في الطلبات"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__unmatched_policy__error
 msgid "Fail and retry after linking"
 msgstr "فشل وإعادة المحاولة بعد الربط"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_store__unmatched_policy__note
 msgid "Add a note line"
 msgstr "إضافة سطر ملاحظة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__salesperson_id
 msgid "Salesperson"
 msgstr "مندوب المبيعات"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__shipping_product_id
 msgid "Shipping Product"
 msgstr "منتج الشحن"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__fee_product_id
 msgid "Cash on Delivery Fee Product"
 msgstr "منتج رسوم الدفع عند الاستلام"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__auto_invoice
 msgid "Create Invoices Automatically"
 msgstr "إنشاء الفواتير تلقائيًا"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__invoice_statuses
 msgid "Invoice on Salla Statuses"
 msgstr "الفوترة عند حالات سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__auto_payment
 msgid "Register Payments Automatically"
 msgstr "تسجيل الدفعات تلقائيًا"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__payment_journal_id
 msgid "Payment Journal"
 msgstr "يومية الدفع"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__auto_deliver
 msgid "Validate Deliveries Automatically"
 msgstr "اعتماد التسليم تلقائيًا"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__deliver_statuses
 msgid "Deliver on Salla Statuses"
 msgstr "التسليم عند حالات سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__last_pull_date
 msgid "Last Pull from Salla"
 msgstr "آخر سحب من سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_store__last_push_date
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__last_push_date
 msgid "Last Stock Push"
 msgstr "آخر إرسال للمخزون"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__store_id
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__store_id
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Store"
 msgstr "المتجر"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__product_id
 msgid "Odoo Product"
 msgstr "منتج أودو"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__salla_product_id
 msgid "Salla Product ID"
 msgstr "معرّف المنتج في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__sku
 msgid "SKU"
 msgstr "الكود (SKU)"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__name
 msgid "Salla Name"
 msgstr "الاسم في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__salla_status
 #: model:ir.model.fields,field_description:toruq_salla.field_sale_order__toruq_salla_status
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Salla Status"
 msgstr "الحالة في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__salla_type
 msgid "Salla Type"
 msgstr "نوع المنتج في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__salla_price
 msgid "Salla Price"
 msgstr "السعر في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__salla_qty
 msgid "Salla Stock"
 msgstr "مخزون سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__salla_unlimited
 msgid "Unlimited in Salla"
 msgstr "غير محدود في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__link_state
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Link Status"
 msgstr "حالة الربط"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_product__link_state__linked
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Linked"
 msgstr "مربوط"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_product__link_state__unmatched
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Not in Odoo"
 msgstr "غير موجود في أودو"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_product__link_state__missing
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__missing_in_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Missing in Salla"
 msgstr "غير موجود في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__exclude
 msgid "Exclude from Sync"
 msgstr "استثناء من المزامنة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__last_seen
 msgid "Last Seen in Salla"
 msgstr "آخر ظهور في سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__last_pushed_qty
 msgid "Last Pushed Qty"
 msgstr "آخر كمية مرسلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__last_push_attempt
 msgid "Last Push Attempt"
 msgstr "آخر محاولة إرسال"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__fail_count
 msgid "Failed Pushes"
 msgstr "محاولات إرسال فاشلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__error
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__error
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_form
 msgid "Error"
 msgstr "خطأ"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__data_hash
 msgid "Data Hash"
 msgstr "بصمة البيانات"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__odoo_qty
 msgid "Odoo Available"
 msgstr "المتاح في أودو"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__reserve_qty
 msgid "Showroom Reserve"
 msgstr "احتياطي المعرض"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_product__target_qty
 msgid "Qty to Send"
 msgstr "الكمية المرسلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__event
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_search
 msgid "Event"
 msgstr "الحدث"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__order_ref
 msgid "Reference"
 msgstr "المرجع"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__payload
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_form
 msgid "Payload"
 msgstr "محتوى الحدث"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__dedup_key
 msgid "Dedup Key"
 msgstr "مفتاح منع التكرار"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_event__state__pending
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_search
 msgid "Pending"
 msgstr "معلّق"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_event__state__done
 msgid "Done"
 msgstr "تم"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_event__state__failed
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_search
 msgid "Failed"
 msgstr "فشل"
 
+#. module: toruq_salla
 #: model:ir.model.fields.selection,name:toruq_salla.selection__toruq_salla_event__state__ignored
 msgid "Ignored"
 msgstr "متجاهَل"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__attempts
 msgid "Attempts"
 msgstr "المحاولات"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__next_try
 msgid "Next Try"
 msgstr "المحاولة التالية"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__received_at
 msgid "Received At"
 msgstr "وقت الاستلام"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__processed_at
 msgid "Processed At"
 msgstr "وقت المعالجة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_toruq_salla_event__sale_order_id
 msgid "Sales Order"
 msgstr "أمر البيع"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_res_partner__toruq_salla_customer_id
 msgid "Salla Customer ID"
 msgstr "معرّف عميل سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_product_template__toruq_salla_publish
 #: model:ir.actions.server,name:toruq_salla.action_publish_on_salla
 msgid "Publish on Salla"
 msgstr "نشر على سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_product_template__toruq_salla_reserve_custom
 msgid "Custom Showroom Reserve"
 msgstr "احتياطي معرض مخصص"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_product_template__toruq_salla_reserve
 msgid "Showroom Reserve Qty"
 msgstr "كمية احتياطي المعرض"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_sale_order__toruq_salla_store_id
 msgid "Salla Store"
 msgstr "متجر سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_sale_order__toruq_salla_order_id
 msgid "Salla Order ID"
 msgstr "رقم طلب سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_sale_order__toruq_salla_reference
 msgid "Salla Reference"
 msgstr "مرجع طلب سلة"
 
+#. module: toruq_salla
 #: model:ir.model.fields,field_description:toruq_salla.field_sale_order__toruq_salla_payment_method
 msgid "Salla Payment Method"
 msgstr "طريقة الدفع في سلة"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Test Connection"
 msgstr "اختبار الاتصال"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Pull Products from Salla"
 msgstr "سحب المنتجات من سلة"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Sync Products to Salla"
 msgstr "مزامنة المنتجات إلى سلة"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Push Stock Now"
 msgstr "إرسال المخزون الآن"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "e.g. Turoq Al-Ghida Store"
 msgstr "مثال: متجر طرق الغذاء"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Connection"
 msgstr "الاتصال"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Salla App Keys"
 msgstr "مفاتيح تطبيق سلة"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Tokens"
 msgstr "الرموز"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Webhook"
 msgstr "الويب هوك"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_form
 msgid "Stock"
 msgstr "المخزون"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Source of Stock"
 msgstr "مصدر المخزون"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Rules"
 msgstr "القواعد"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 #: model:ir.ui.menu,name:toruq_salla.menu_products
 msgid "Products"
 msgstr "المنتجات"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Publishing"
 msgstr "النشر"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Fields to Keep in Sync"
 msgstr "الحقول المراد مزامنتها"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 #: model:ir.ui.menu,name:toruq_salla.menu_orders
 msgid "Orders"
 msgstr "الطلبات"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Import"
 msgstr "الاستيراد"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_store_form
 msgid "Automation (confirmed orders only)"
 msgstr "الأتمتة (للأوامر المؤكدة فقط)"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_list
 msgid "Push Stock"
 msgstr "إرسال المخزون"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_list
 msgid "Re-link by SKU"
 msgstr "إعادة الربط بالكود SKU"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "Out of Stock in Salla"
 msgstr "نافد في سلة"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 msgid "With Errors"
 msgstr "بها أخطاء"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_product_map_search
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_search
 msgid "Group By"
 msgstr "تجميع حسب"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_list
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_event_form
 msgid "Retry"
 msgstr "إعادة المحاولة"
 
+#. module: toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.product_template_search_toruq_salla
 msgid "Published on Salla"
 msgstr "منشور على سلة"
 
+#. module: toruq_salla
 #: model:ir.actions.act_window,name:toruq_salla.action_store
 msgid "Salla Stores"
 msgstr "متاجر سلة"
 
+#. module: toruq_salla
 #: model:ir.actions.act_window,name:toruq_salla.action_product_map
 msgid "Salla Products"
 msgstr "منتجات سلة"
 
+#. module: toruq_salla
 #: model:ir.actions.act_window,name:toruq_salla.action_event
 msgid "Salla Events Log"
 msgstr "سجل أحداث سلة"
 
+#. module: toruq_salla
 #: model:ir.actions.act_window,name:toruq_salla.action_salla_orders
 msgid "Salla Orders"
 msgstr "طلبات سلة"
 
+#. module: toruq_salla
 #: model:ir.actions.client,name:toruq_salla.action_dashboard
 msgid "Salla Dashboard"
 msgstr "لوحة تحكم سلة"
 
+#. module: toruq_salla
 #: model:ir.actions.server,name:toruq_salla.action_unpublish_from_salla
 msgid "Stop Publishing on Salla"
 msgstr "إيقاف النشر على سلة"
 
+#. module: toruq_salla
 #: model:ir.ui.menu,name:toruq_salla.menu_dashboard
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
+#. module: toruq_salla
 #: model:ir.ui.menu,name:toruq_salla.menu_events
 msgid "Events Log"
 msgstr "سجل الأحداث"
 
+#. module: toruq_salla
 #: model:ir.ui.menu,name:toruq_salla.menu_config
 msgid "Configuration"
 msgstr "الإعدادات"
 
+#. module: toruq_salla
 #: model:ir.ui.menu,name:toruq_salla.menu_stores
 msgid "Stores"
 msgstr "المتاجر"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 #: model_terms:ir.ui.view,arch_db:toruq_salla.view_order_form_toruq_salla
 #: model_terms:ir.ui.view,arch_db:toruq_salla.product_template_form_toruq_salla
@@ -568,55 +700,68 @@ msgstr "المتاجر"
 msgid "Salla"
 msgstr "سلة"
 
+#. module: toruq_salla
 #: model:res.groups,name:toruq_salla.group_user
 msgid "Salla User"
 msgstr "مستخدم سلة"
 
+#. module: toruq_salla
 #: model:res.groups,name:toruq_salla.group_manager
 msgid "Salla Manager"
 msgstr "مدير سلة"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "%(c)s products created and %(u)s updated in Salla."
 msgstr "تم إنشاء %(c)s منتج وتحديث %(u)s منتج في سلة."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "%s products loaded from Salla."
 msgstr "تم تحميل %s منتج من سلة."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 #: code:addons/toruq_salla/models/salla_product.py:0
 msgid "%s products updated in Salla."
 msgstr "تم تحديث %s منتج في سلة."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Automatic step failed (%(step)s): %(err)s"
 msgstr "فشلت خطوة تلقائية (%(step)s): %(err)s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Cancelled in Salla but a delivery is already done. Please handle it manually."
 msgstr "تم إلغاء الطلب في سلة لكن التسليم تم بالفعل. يرجى المعالجة يدويًا."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Cannot refresh the Salla token: refresh token or client credentials are missing. Re-install the app from Salla."
 msgstr "تعذر تجديد رمز سلة: رمز التجديد أو بيانات التطبيق مفقودة. أعد تثبيت التطبيق من سلة."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Connection to Salla is working."
 msgstr "الاتصال بسلة يعمل بنجاح."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Could not create %(sku)s in Salla: %(err)s"
 msgstr "تعذر إنشاء %(sku)s في سلة: %(err)s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Could not reach Salla: %s"
 msgstr "تعذر الوصول إلى سلة: %s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Imported from Salla order %(ref)s (status: %(status)s, payment: %(pay)s)."
 msgstr "تم الاستيراد من طلب سلة %(ref)s (الحالة: %(status)s، الدفع: %(pay)s)."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/product_template.py:0
 #: code:addons/toruq_salla/models/salla_store.py:0
 #: code:addons/toruq_salla/models/salla_product.py:0
@@ -624,86 +769,107 @@ msgstr "تم الاستيراد من طلب سلة %(ref)s (الحالة: %(stat
 msgid "Only Salla managers can do this."
 msgstr "مديرو سلة فقط يمكنهم تنفيذ هذا الإجراء."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Products not found in Odoo (link them by SKU): %s"
 msgstr "منتجات غير موجودة في أودو (اربطها بالكود SKU): %s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla API error %(code)s: %(msg)s"
 msgstr "خطأ من سلة %(code)s: %(msg)s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla Cash on Delivery Fee"
 msgstr "رسوم الدفع عند الاستلام (سلة)"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla Customer %s"
 msgstr "عميل سلة %s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla Shipping"
 msgstr "الشحن (سلة)"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla access token received and stored."
 msgstr "تم استلام رمز الوصول من سلة وحفظه."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla did not return a product id."
 msgstr "لم ترجع سلة معرّف المنتج."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla is not connected yet. Install the app on the store (Easy Mode) or paste an access token."
 msgstr "سلة غير متصلة بعد. ثبّت التطبيق على المتجر (Easy Mode) أو الصق رمز الوصول."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla rate limit reached. It will be retried automatically."
 msgstr "تم الوصول للحد الأقصى لطلبات سلة. ستتم إعادة المحاولة تلقائيًا."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla refused to refresh the token: %s"
 msgstr "رفضت سلة تجديد الرمز: %s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla reported a refund for this order. Please create the credit note manually."
 msgstr "أبلغت سلة عن استرجاع لهذا الطلب. يرجى إنشاء إشعار دائن يدويًا."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Salla status changed to: %s"
 msgstr "تغيّرت حالة سلة إلى: %s"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Stock sync needs order import. Otherwise Salla stock would be reset by Odoo."
 msgstr "مزامنة المخزون تتطلب استيراد الطلبات، وإلا سيعيد أودو ضبط مخزون سلة."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_event.py:0
 msgid "The Salla app was uninstalled from the store."
 msgstr "تم إلغاء تثبيت تطبيق سلة من المتجر."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "The Salla order has no items."
 msgstr "طلب سلة لا يحتوي على منتجات."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "The Salla order id is missing."
 msgstr "رقم طلب سلة مفقود."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "Total differs: Salla %(salla).2f vs Odoo %(odoo).2f. Please review taxes and discounts."
 msgstr "الإجمالي مختلف: سلة %(salla).2f مقابل أودو %(odoo).2f. يرجى مراجعة الضرائب والخصومات."
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "cancel order"
 msgstr "إلغاء الطلب"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "create invoice"
 msgstr "إنشاء الفاتورة"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "register payment"
 msgstr "تسجيل الدفعة"
 
+#. module: toruq_salla
 #: code:addons/toruq_salla/models/salla_store.py:0
 msgid "validate delivery"
 msgstr "اعتماد التسليم"
