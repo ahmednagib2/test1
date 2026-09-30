@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="toruq_salla.Dashboard">
+        <div class="o_toruq_dashboard">
+            <div class="tq_header">
+                <div class="tq_header_text">
+                    <h1 t-esc="tr('title')"/>
+                    <p t-esc="tr('subtitle')"/>
+                </div>
+                <div class="tq_header_actions">
+                    <select t-if="state.data and state.data.stores.length &gt; 1" class="tq_select" t-on-change="onStoreChange">
+                        <t t-foreach="state.data.stores" t-as="s" t-key="s.id">
+                            <option t-att-value="s.id" t-att-selected="s.id == state.storeId" t-esc="s.name"/>
+                        </t>
+                    </select>
+                    <button class="tq_btn" t-on-click="load"><i class="fa fa-refresh"/> <t t-esc="tr('refresh')"/></button>
+                    <t t-if="store and store.can_manage">
+                        <button class="tq_btn" t-att-disabled="state.busy" t-on-click="() => this.runAction('action_pull_products')"><i class="fa fa-cloud-download"/> <t t-esc="tr('pull')"/></button>
+                        <button class="tq_btn" t-att-disabled="state.busy" t-on-click="() => this.runAction('action_sync_products')"><i class="fa fa-exchange"/> <t t-esc="tr('sync')"/></button>
+                        <button class="tq_btn tq_btn_solid" t-att-disabled="state.busy" t-on-click="() => this.runAction('action_push_stock')"><i class="fa fa-cubes"/> <t t-esc="tr('push')"/></button>
+                    </t>
+                </div>
+            </div>
+
+            <div t-if="state.loading and !state.data" class="tq_empty"><t t-esc="tr('busy')"/></div>
+
+            <div t-elif="state.data and !state.data.store" class="tq_empty">
+                <p t-esc="tr('no_store')"/>
+                <button class="tq_btn tq_btn_solid" t-on-click="openStore"><t t-esc="tr('create_store')"/></button>
+            </div>
+
+            <t t-elif="state.data and state.data.store">
+                <div t-if="state.busy" class="tq_busy"><i class="fa fa-spinner fa-spin"/> <t t-esc="tr('busy')"/></div>
+
+                <div class="tq_cards">
+                    <t t-foreach="cards" t-as="c" t-key="c.key">
+                        <div t-attf-class="tq_card tq_#{c.tone}">
+                            <div class="tq_card_value" t-esc="c.value"/>
+                            <div class="tq_card_label" t-esc="c.label"/>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="tq_grid">
+                    <div class="tq_panel">
+                        <h3 t-esc="tr('orders_chart')"/>
+                        <div class="tq_bars">
+                            <t t-foreach="state.data.series" t-as="d" t-key="d.date">
+                                <div class="tq_bar_col">
+                                    <div class="tq_bar_num" t-esc="d.count"/>
+                                    <div class="tq_bar" t-att-style="'height:' + barHeight(d.count) + 'px'"/>
+                                    <div class="tq_bar_day" t-esc="d.date.slice(5)"/>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="tq_panel">
+                        <h3 t-esc="tr('info_title')"/>
+                        <table class="tq_info">
+                            <tr><td t-esc="tr('store')"/><td><b t-esc="store.name"/> <span t-attf-class="tq_badge tq_badge_#{store.state}" t-esc="stateLabel"/></td></tr>
+                            <tr><td t-esc="tr('merchant')"/><td t-esc="store.merchant_id or '-'"/></tr>
+                            <tr><td t-esc="tr('warehouse')"/><td t-esc="store.warehouse or '-'"/></tr>
+                            <tr><td t-esc="tr('order_mode')"/><td t-esc="modeLabel"/></tr>
+                            <tr><td t-esc="tr('stock_sync')"/><td t-esc="store.stock_sync ? tr('on') : tr('off')"/></tr>
+                            <tr><td t-esc="tr('reserve')"/><td t-esc="store.safety ? store.reserve : tr('off')"/></tr>
+                            <tr><td t-esc="tr('last_pull')"/><td t-esc="store.last_pull or '-'"/></tr>
+                            <tr><td t-esc="tr('last_push')"/><td t-esc="store.last_push or '-'"/></tr>
+                            <tr><td t-esc="tr('token')"/><td t-esc="store.token_expires or '-'"/></tr>
+                        </table>
+                        <div t-if="store.last_error" class="tq_error"><b t-esc="tr('last_error')"/>: <span t-esc="store.last_error"/></div>
+                        <div class="tq_links">
+                            <button class="tq_link" t-on-click="openStore"><t t-esc="tr('settings')"/></button>
+                            <button class="tq_link" t-on-click="() => this.openAction('toruq_salla.action_product_map')"><t t-esc="tr('open_products')"/></button>
+                            <button class="tq_link" t-on-click="() => this.openAction('toruq_salla.action_salla_orders')"><t t-esc="tr('open_orders')"/></button>
+                            <button class="tq_link" t-on-click="() => this.openAction('toruq_salla.action_event')"><t t-esc="tr('open_events')"/></button>
+                            <button t-if="store.can_manage" class="tq_link" t-att-disabled="state.busy" t-on-click="() => this.runAction('action_test_connection')"><t t-esc="tr('test')"/></button>
+                        </div>
+                    </div>
+
+                    <div class="tq_panel">
+                        <h3 t-esc="tr('low_title')"/>
+                        <p t-if="!state.data.low_products.length" class="tq_muted" t-esc="tr('none')"/>
+                        <table t-else="" class="tq_table">
+                            <thead><tr><th t-esc="tr('sku')"/><th t-esc="tr('name')"/><th t-esc="tr('salla_qty')"/><th t-esc="tr('odoo_qty')"/></tr></thead>
+                            <tbody>
+                                <t t-foreach="state.data.low_products" t-as="p" t-key="p_index">
+                                    <tr>
+                                        <td t-esc="p.sku"/>
+                                        <td t-esc="p.name"/>
+                                        <td><b t-esc="p.salla_qty"/></td>
+                                        <td t-esc="p.odoo_qty === null ? '-' : p.odoo_qty"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tq_panel">
+                        <h3 t-esc="tr('failed_title')"/>
+                        <p t-if="!state.data.failed_events.length" class="tq_muted" t-esc="tr('none')"/>
+                        <ul t-else="" class="tq_list">
+                            <t t-foreach="state.data.failed_events" t-as="e" t-key="e.id">
+                                <li><b t-esc="e.event"/> <span class="tq_muted" t-esc="e.date"/><br/><span t-esc="e.error"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>
