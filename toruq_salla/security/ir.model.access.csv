@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_store_user,toruq.salla.store user,model_toruq_salla_store,group_user,1,0,0,0
+access_store_manager,toruq.salla.store manager,model_toruq_salla_store,group_manager,1,1,1,1
+access_product_user,toruq.salla.product user,model_toruq_salla_product,group_user,1,0,0,0
+access_product_manager,toruq.salla.product manager,model_toruq_salla_product,group_manager,1,1,1,1
+access_event_user,toruq.salla.event user,model_toruq_salla_event,group_user,1,0,0,0
+access_event_manager,toruq.salla.event manager,model_toruq_salla_event,group_manager,1,1,1,1
