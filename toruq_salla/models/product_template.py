@@ -1,24 +1,15 @@
-from odoo import _, fields, models
-from odoo.exceptions import AccessError
-
+from odoo import api, fields, models
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    toruq_salla_publish = fields.Boolean(string='Publish on Salla', copy=False, index=True)
-    toruq_salla_reserve_custom = fields.Boolean(string='Custom Showroom Reserve', copy=False)
-    toruq_salla_reserve = fields.Integer(string='Showroom Reserve Qty', default=1, copy=False)
-
-    def _toruq_check_manager(self):
-        if not self.env.user.has_group('toruq_salla.group_manager'):
-            raise AccessError(_('Only Salla managers can do this.'))
-
-    def toruq_action_publish(self):
-        self._toruq_check_manager()
-        self.sudo().write({'toruq_salla_publish': True})
-        return True
-
-    def toruq_action_unpublish(self):
-        self._toruq_check_manager()
-        self.sudo().write({'toruq_salla_publish': False})
-        return True
+    salla_sync_enabled = fields.Boolean(string='Sync with Salla')
+    salla_store_id = fields.Many2one('toruq.salla.store', string='Salla Store')
+    salla_product_id = fields.Char(string='Salla Product ID', copy=False, readonly=True)
+    salla_sync_price = fields.Boolean(string='Sync Price', default=True)
+    salla_sync_stock = fields.Boolean(string='Sync Stock', default=True)
+    salla_sync_status = fields.Selection([
+        ('not_synced', 'Not Synced'), ('synced', 'Synced'), ('error', 'Error')
+    ], default='not_synced', copy=False)
+    salla_sync_message = fields.Text(string='Sync Message', copy=False)
+    salla_last_sync = fields.Datetime(string='Last Sync', copy=False)
