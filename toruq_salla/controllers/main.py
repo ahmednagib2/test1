@@ -19,6 +19,7 @@ HANDLED_EVENTS = {
     'order.cancelled',
     'order.refunded',
     'product.created',
+    'product.updated',
     'product.deleted',
     'product.price.updated',
     'product.status.updated',
