@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_store_form_stock_sync" model="ir.ui.view">
+        <field name="name">toruq.salla.store.form.stock.sync</field>
+        <field name="model">toruq.salla.store</field>
+        <field name="inherit_id" ref="toruq_salla.view_store_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_sync_products']" position="before">
+                <button name="action_relink_all" type="object" string="Link Existing Salla Products" groups="toruq_salla.group_manager"/>
+                <button name="action_publish_all" type="object" string="Publish All Sellable Stock Products" groups="toruq_salla.group_manager" confirm="This marks every sellable stockable product that has an Internal Reference as published on Salla. Continue?"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
