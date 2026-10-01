@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_tool_list" model="ir.ui.view">
+        <field name="name">product.template.toruq.tool.list</field>
+        <field name="model">product.template</field>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <list multi_edit="1" create="0" delete="0" decoration-muted="not toruq_salla_publish">
+                <header>
+                    <button name="action_toruq_send_to_salla" type="object" string="Send to Salla" class="btn-primary"/>
+                    <button name="action_toruq_open_options" type="object" string="Send with options..."/>
+                    <button name="action_toruq_push_stock_now" type="object" string="Push stock now"/>
+                    <button name="action_toruq_stop_sending" type="object" string="Stop sending"/>
+                </header>
+                <field name="image_128" widget="image" options="{'size': [40, 40]}" optional="show"/>
+                <field name="name"/>
+                <field name="default_code" optional="show"/>
+                <field name="barcode" optional="hide"/>
+                <field name="categ_id" optional="hide"/>
+                <field name="list_price" optional="show"/>
+                <field name="qty_available" optional="show"/>
+                <field name="free_qty" optional="show"/>
+                <field name="toruq_salla_publish"/>
+                <field name="toruq_salla_sync_stock"/>
+                <field name="toruq_salla_reserve_custom" optional="hide"/>
+                <field name="toruq_salla_reserve" optional="show"/>
+                <field name="toruq_salla_max_qty" optional="show"/>
+                <field name="toruq_salla_send_qty"/>
+                <field name="toruq_salla_qty"/>
+                <field name="toruq_salla_last_push" optional="hide"/>
+                <field name="toruq_salla_error" optional="show"/>
+                <field name="toruq_salla_state" widget="badge" decoration-success="toruq_salla_state == 'synced'" decoration-warning="toruq_salla_state == 'pending'" decoration-danger="toruq_salla_state == 'error'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_product_tool_search" model="ir.ui.view">
+        <field name="name">product.template.toruq.tool.search</field>
+        <field name="model">product.template</field>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Product" filter_domain="['|', '|', ('name', 'ilike', self), ('default_code', 'ilike', self), ('barcode', 'ilike', self)]"/>
+                <filter name="published" string="Selected for Salla" domain="[('toruq_salla_publish', '=', True)]"/>
+                <filter name="not_published" string="Not selected" domain="[('toruq_salla_publish', '=', False)]"/>
+                <separator/>
+                <filter name="storable" string="Stock products" domain="[('is_storable', '=', True)]"/>
+                <filter name="in_stock" string="In stock" domain="[('qty_available', '&gt;', 0)]"/>
+                <filter name="no_sku" string="No Internal Reference" domain="[('default_code', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_categ" string="Category" context="{'group_by': 'categ_id'}"/>
+                    <filter name="group_published" string="Selected for Salla" context="{'group_by': 'toruq_salla_publish'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_tool" model="ir.actions.act_window">
+        <field name="name">Products Tool</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_product_tool_search"/>
+        <field name="domain">[('sale_ok', '=', True)]</field>
+        <field name="context">{'search_default_storable': 1}</field>
+    </record>
+
+    <record id="action_product_tool_list" model="ir.actions.act_window.view">
+        <field name="sequence">1</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_product_tool_list"/>
+        <field name="act_window_id" ref="action_product_tool"/>
+    </record>
+
+    <record id="view_send_wizard_form" model="ir.ui.view">
+        <field name="name">toruq.salla.send.wizard.form</field>
+        <field name="model">toruq.salla.send.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="product_tmpl_ids" widget="many2many_tags"/>
+                </group>
+                <group string="Stock">
+                    <field name="sync_stock"/>
+                    <field name="set_reserve"/>
+                    <field name="reserve_qty" invisible="not set_reserve"/>
+                    <field name="set_max"/>
+                    <field name="max_qty" invisible="not set_max"/>
+                </group>
+                <group>
+                    <field name="push_now"/>
+                </group>
+                <footer>
+                    <button name="action_confirm" type="object" string="Send to Salla" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_template_form_toruq_salla_tool" model="ir.ui.view">
+        <field name="name">product.template.form.toruq.salla.tool</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_template_form_toruq_salla"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='toruq_salla_publish']" position="after">
+                <field name="toruq_salla_sync_stock"/>
+            </xpath>
+            <xpath expr="//field[@name='toruq_salla_reserve']" position="after">
+                <field name="toruq_salla_max_qty"/>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="menu_products_tool" name="Products Tool / أداة المنتجات" parent="menu_root" action="action_product_tool" sequence="2" groups="toruq_salla.group_manager"/>
+</odoo>

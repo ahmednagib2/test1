@@ -3,7 +3,7 @@
     'summary': 'Odoo to Salla integration: products, stock, orders and dashboard (Odoo is the master)',
     'description': 'Complete Salla integration for Turoq Al-Ghida. Publish selected Odoo products to Salla, sync stock from a chosen warehouse with a showroom reserve, import Salla orders with configurable automation, and follow everything on an orange dashboard. Arabic and English.',
     'category': 'Sales',
-    'version': '18.0.1.1.0',
+    'version': '18.0.1.2.0',
     'author': 'Ahmed Nagib (أحمد نجيب)',
     'license': 'LGPL-3',
     'depends': ['stock', 'sale_management', 'sale_stock', 'account', 'mail'],
@@ -20,6 +20,7 @@
         'views/product_views.xml',
         'views/dashboard_views.xml',
         'views/menus.xml',
+        'views/product_tool_views.xml',
     ],
     'assets': {
         'web.assets_backend': [

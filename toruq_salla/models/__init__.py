@@ -6,3 +6,4 @@ from . import salla_product
 from . import salla_event
 from . import salla_store_guard
 from . import salla_stock_sync
+from . import salla_product_tool
